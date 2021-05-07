@@ -1,5 +1,7 @@
 #include "GodotBounceIcon.hpp"
 
+#include "BounceSide.hpp"
+
 #include <Viewport.hpp>
 
 #include <cmath>
@@ -46,11 +48,14 @@ void GodotBounceIcon::_process(float delta) {
   auto prevDirectionDown = directionDown;
 
   updateDirections(time_passed, xperiod, yperiod);
+  checkForBounce(prevDirectionDown, directionDown, prevDirectionRight, directionRight);
+}
 
-  if (prevDirectionRight && !directionRight) emitBounce(BounceSide::Right);
-  if (!prevDirectionRight && directionRight) emitBounce(BounceSide::Left);
-  if (prevDirectionDown && !directionDown) emitBounce(BounceSide::Floor);
-  if (!prevDirectionDown && directionDown) emitBounce(BounceSide::Ceiling);
+void GodotBounceIcon::checkForBounce(bool prevDown, bool down, bool prevRight, bool right) {
+  if (prevRight && !right) emitBounce(BounceSide::Right);
+  if (!prevRight && right) emitBounce(BounceSide::Left);
+  if (prevDown && !down) emitBounce(BounceSide::Floor);
+  if (!prevDown && down) emitBounce(BounceSide::Ceiling);
 }
 
 void GodotBounceIcon::updateLimits() {

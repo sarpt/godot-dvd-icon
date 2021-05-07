@@ -1,5 +1,7 @@
 #include "Main.hpp"
 
+#include "BounceSide.hpp"
+
 #include "Sprite.hpp"
 
 using namespace godot;
@@ -31,5 +33,6 @@ void Main::printPosition(Sprite* node, Vector2 newPosition) {
 }
 
 void Main::printBounce(Sprite* node, int side) {
-  Godot::print("Bounce " + String::num_real(side));
+  auto bounceText = String{bounceSideToText(static_cast<BounceSide>(side)).c_str()};
+  Godot::print("Bounce " + bounceText);
 }
