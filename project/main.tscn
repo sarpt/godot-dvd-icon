@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://bin/GodotBounceIcon.gdns" type="Script" id=2]
+[ext_resource path="res://bin/Main.gdns" type="Script" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="GodotBounceIcon" type="Sprite" parent="."]
+position = Vector2( -0.194808, 0.00413513 )
+scale = Vector2( 0.999878, 1.00293 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+speed = 1.0
+
+[node name="PositionTimer" type="Timer" parent="GodotBounceIcon"]
+wait_time = 0.1
+autostart = true

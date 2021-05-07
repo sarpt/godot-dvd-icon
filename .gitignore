@@ -1,0 +1,7 @@
+.vscode
+.sconsign.dblite
+
+project/.import
+project/bin/x11
+
+src/*.os
